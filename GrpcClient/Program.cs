@@ -1,5 +1,6 @@
-﻿using Grpc.Net.Client;
-using GrpcServer;
+﻿using GrpcServer;
+using Grpc.Net.Client;
+
 
 namespace GrpcClient
 {
@@ -7,7 +8,7 @@ namespace GrpcClient
     {
         static async Task Main(string[] args)
         {
-            using var channel = GrpcChannel.ForAddress("https://localhost:5008");
+            using var channel = GrpcChannel.ForAddress("http://localhost:5008");
             var client = new Greeter.GreeterClient(channel);
 
             var reply = await client.SayHelloAsync(new HelloRequest() { Name = "World"});
